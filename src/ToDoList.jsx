@@ -14,7 +14,9 @@ function ToDoList() {
 
   function handleAddTask() {}
 
-  function handleDeleteTask() {}
+  function handleDeleteTask(index) {}
+  function handleMoveUpTask(index) {}
+  function handleMoveDownTask(index) {}
 
   return (
     <div>
@@ -39,6 +41,18 @@ function ToDoList() {
               onClick={() => handleDeleteTask(index)}
             >
               Delete
+            </button>
+            <button
+              className="move-up-button"
+              onClick={() => handleMoveUpTask(index)}
+            >
+              🔺
+            </button>
+            <button
+              className="move-down-button"
+              onClick={() => handleMoveDownTask(index)}
+            >
+              🔻
             </button>
           </li>
         ))}
