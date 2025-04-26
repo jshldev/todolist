@@ -18,7 +18,9 @@ function ToDoList() {
     setNewTask("");
   }
 
-  function handleDeleteTask(index) {}
+  function handleDeleteTask(index) {
+    setTasks(tasks.filter((e, i) => i !== index));
+  }
   function handleMoveUpTask(index) {}
   function handleMoveDownTask(index) {}
 
