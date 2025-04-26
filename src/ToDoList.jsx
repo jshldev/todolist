@@ -12,7 +12,11 @@ function ToDoList() {
     setNewTask(input.target.value);
   }
 
-  function handleAddTask() {}
+  function handleAddTask() {
+    if (newTask.trim() === "") return;
+    setTasks((t) => [...t, newTask]);
+    setNewTask("");
+  }
 
   function handleDeleteTask(index) {}
   function handleMoveUpTask(index) {}
