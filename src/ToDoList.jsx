@@ -1,12 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function ToDoList() {
-  const [tasks, setTasks] = useState([
-    "test data 1",
-    "test data 2",
-    "test data 3",
-  ]);
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState([]);
+  const inputField = useRef(null);
 
   function handleInputChange(input) {
     setNewTask(input.target.value);
@@ -16,6 +13,7 @@ function ToDoList() {
     if (newTask.trim() === "") return;
     setTasks((t) => [...t, newTask]);
     setNewTask("");
+    inputField.current.focus();
   }
 
   function handleDeleteTask(index) {
@@ -49,6 +47,7 @@ function ToDoList() {
           value={newTask}
           onChange={handleInputChange}
           className="text-[1.8em] border-3 border-black/40 rounded-md m-3 bg-white"
+          ref={inputField}
         />
         <button
           className="add-button !text-[1.4em] bg-green-300 hover:bg-green-400"
