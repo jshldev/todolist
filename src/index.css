@@ -1,6 +1,41 @@
 @import "tailwindcss";
 
-:root {
+body {
+  background-color: hsla(206, 79%, 61%, 0.853);
+}
+button {
+  border-radius: 6px;
+  border: none;
+  padding: 0.2em 0.6em;
+  font-size: 0.75em;
+  /* font-weight: 500; */
+  font-family: inherit;
+  font-weight: bold;
+  /* background-color: #1a1a1a; */
+  cursor: pointer;
+  transition: background-color 0.25s;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+li {
+  font-size: 1.6em;
+  font-weight: bold;
+  /* padding: 15px; */
+  margin-bottom: 8px;
+  background-color: hsla(0, 0%, 97%, 0.996);
+  border: 3px solid hsla(205, 69%, 30%, 0.81);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  flex: 1;
+}
+/* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -67,4 +102,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} */

@@ -48,8 +48,12 @@ function ToDoList() {
           placeholder="Enter a task"
           value={newTask}
           onChange={handleInputChange}
+          className="text-[1.8em] border-3 border-black/40 rounded-md m-3 bg-white"
         />
-        <button className="add-button" onClick={handleAddTask}>
+        <button
+          className="add-button !text-[1.4em] bg-green-300 hover:bg-green-400"
+          onClick={handleAddTask}
+        >
           Add
         </button>
       </div>
@@ -57,21 +61,21 @@ function ToDoList() {
       <ol>
         {tasks.map((task, index) => (
           <li key={index}>
-            <span>{task}</span>
+            <span className="text">{task}</span>
             <button
-              className="delete-button"
+              className="delete-button bg-red-600/60 hover:bg-red-600/70"
               onClick={() => handleDeleteTask(index)}
             >
               Delete
             </button>
             <button
-              className="move-up-button"
+              className="move-up-button bg-blue-200 hover:bg-blue-300"
               onClick={() => handleMoveUpTask(index)}
             >
               🔺
             </button>
             <button
-              className="move-down-button"
+              className="move-down-button bg-blue-200 hover:bg-blue-300"
               onClick={() => handleMoveDownTask(index)}
             >
               🔻
