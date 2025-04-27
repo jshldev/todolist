@@ -21,8 +21,24 @@ function ToDoList() {
   function handleDeleteTask(index) {
     setTasks(tasks.filter((e, i) => i !== index));
   }
-  function handleMoveUpTask(index) {}
-  function handleMoveDownTask(index) {}
+  function handleMoveUpTask(index) {
+    if (index < 1) return;
+    const tempTasks = [...tasks];
+    [tempTasks[index], tempTasks[index - 1]] = [
+      tempTasks[index - 1],
+      tempTasks[index],
+    ];
+    setTasks(tempTasks);
+  }
+  function handleMoveDownTask(index) {
+    if (index >= tasks.length - 1) return;
+    const tempTasks = [...tasks];
+    [tempTasks[index], tempTasks[index + 1]] = [
+      tempTasks[index + 1],
+      tempTasks[index],
+    ];
+    setTasks(tempTasks);
+  }
 
   return (
     <div>
