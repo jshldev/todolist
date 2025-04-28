@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function ToDoList() {
   const [tasks, setTasks] = useState([]);
@@ -11,7 +11,7 @@ function ToDoList() {
 
   function handleAddTask() {
     if (newTask.trim() === "") return;
-    setTasks((t) => [...t, newTask]);
+    setTasks((t) => [...t, { text: newTask, isCompleted: false }]);
     setNewTask("");
     inputField.current.focus();
   }
@@ -38,6 +38,21 @@ function ToDoList() {
     setTasks(tempTasks);
   }
 
+  function toggle(index) {
+    setTasks((tempTasks) => {
+      return tempTasks.map((task, i) => {
+        if (i === index) {
+          return { ...task, isCompleted: !task.isCompleted };
+        }
+        return task;
+      });
+    });
+  }
+
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks]);
+
   return (
     <div>
       <div>
@@ -60,7 +75,16 @@ function ToDoList() {
       <ol>
         {tasks.map((task, index) => (
           <li key={index}>
-            <span className="text">{task}</span>
+            <span
+              className={`text decoration-red-400 decoration-5 ${
+                task.isCompleted ? "line-through text-gray-500" : ""
+              }`}
+              onClick={() => {
+                toggle(index);
+              }}
+            >
+              {task.text}
+            </span>
             <button
               className="delete-button bg-red-600/60 hover:bg-red-600/70"
               onClick={() => handleDeleteTask(index)}
