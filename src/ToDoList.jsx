@@ -1,7 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 
 function ToDoList() {
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    localStorage.getItem("tasks")
+      ? JSON.parse(localStorage.getItem("tasks"))
+      : []
+  );
   const [newTask, setNewTask] = useState([]);
   const inputField = useRef(null);
 
@@ -38,6 +42,10 @@ function ToDoList() {
     setTasks(tempTasks);
   }
 
+  function handleDeleteAllTask() {
+    setTasks([]);
+  }
+
   function toggle(index) {
     setTasks((tempTasks) => {
       return tempTasks.map((task, i) => {
@@ -50,7 +58,7 @@ function ToDoList() {
   }
 
   useEffect(() => {
-    console.log(tasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   return (
@@ -70,6 +78,12 @@ function ToDoList() {
         >
           Add
         </button>
+        <button
+          className=" !text-[1.4em] bg-red-400 hover:bg-red-500"
+          onClick={handleDeleteAllTask}
+        >
+          Delete All
+        </button>
       </div>
 
       <ol>
@@ -86,7 +100,7 @@ function ToDoList() {
               {task.text}
             </span>
             <button
-              className="delete-button bg-red-600/60 hover:bg-red-600/70"
+              className="delete-button bg-red-600/60 hover:bg-red-600/80"
               onClick={() => handleDeleteTask(index)}
             >
               Delete
